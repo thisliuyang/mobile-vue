@@ -1,20 +1,19 @@
 <template>
   <div>
-    <router-view></router-view>
+    searchsfgsgsgsfgsfgsdfgsd
   </div>
 </template>
 <script>
-import { Toast } from 'mint-ui'
 export default {
+  name: 'Search',
   data () {
     return {}
-  },
-  methods: {
-    btn () {
-      Toast('提示信息')
-    }
   }
 }
 </script>
 <style scoped>
+div{
+  height: 300px;
+  background-color: pink;
+}
 </style>
