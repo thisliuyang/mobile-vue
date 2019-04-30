@@ -14,7 +14,7 @@
         <span class="mui-tab-label">会员</span>
       </router-link>
       <router-link class="mui-tab-item" to="/shop">
-        <span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge">0</span></span>
+        <span class="mui-icon mui-icon-extra mui-icon-extra-cart"><span class="mui-badge">{{$store.getters.getAllCount}}</span></span>
         <span class="mui-tab-label">购物车</span>
       </router-link>
       <router-link class="mui-tab-item" to="/search">
@@ -36,6 +36,12 @@ export default {
   },
   data () {
     return {}
+  },
+  methods: {
+    toHome () {
+      this.$router.push('/')
+      // this.$router.go(-1)
+    }
   }
 }
 </script>
@@ -47,7 +53,7 @@ export default {
 }
 .v-enter {
   opacity: 0;
-  transform: translateX(100%)
+  transform: translateX(100%);
 }
 .v-leave-to {
   opacity: 0;
@@ -55,7 +61,7 @@ export default {
   position: absolute;
 }
 .v-enter-active,
-.v-leave-active{
+.v-leave-active {
   transition: all 0.6s ease;
 }
 </style>

@@ -2,16 +2,22 @@
   <div class="cmt-container">
     <h3>发表评论</h3>
     <hr>
-    <textarea v-model="commentText" name="" placeholder="最多吐槽200字" maxlength="200" id="" cols="30" rows="10"></textarea>
+    <textarea
+      v-model="commentText"
+      name=""
+      placeholder="最多吐槽200字"
+      maxlength="200"
+      id=""
+      cols="30"
+      rows="10"
+    ></textarea>
     <mt-button type="primary" size="large" @click="handleComment">发表评论</mt-button>
     <div class="cmt-list">
       <div class="cmt-item" v-for="(item, i) in comments" :key="i">
-        <div class="cmt-title">
-          第一楼&nbsp;&nbsp;用户： {{item.user_name}}&nbsp;&nbsp;发表时间{{item.add_time | dateFormat}}
-        </div>
-        <div class="cmt-body">
-          {{item.content}}
-        </div>
+        <div
+          class="cmt-title"
+        >第一楼&nbsp;&nbsp;用户： {{item.user_name}}&nbsp;&nbsp;发表时间{{item.add_time | dateFormat}}</div>
+        <div class="cmt-body">{{item.content}}</div>
       </div>
     </div>
     <mt-button type="primary" size="large" plain @click="getMore">加载更多</mt-button>
@@ -78,5 +84,4 @@ textarea {
     text-indent: 2em;
   }
 }
-
 </style>

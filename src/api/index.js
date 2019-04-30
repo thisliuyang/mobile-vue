@@ -58,7 +58,7 @@ export const getImagesList = (cateid) => {
   }).then(res => res.data)
 }
 
-// 获取图片详情shuj
+// 获取图片详情数据
 export const getImageInfo = (imgid) => {
   return request({
     url: `/api/getimageInfo/${imgid}`,

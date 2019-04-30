@@ -17,4 +17,7 @@ export default {
 }
 </script>
 <style scoped>
+html {
+  touch-action: none;
+}
 </style>

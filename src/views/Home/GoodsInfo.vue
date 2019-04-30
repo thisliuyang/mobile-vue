@@ -6,15 +6,15 @@
       </div>
     </div>
     <div class="mui-card">
-      <div class="mui-card-header">商品名称</div>
+      <div class="mui-card-header">{{ goodsinfo.title}}</div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
           <p class="price">
-            市场价: <del>￥2399</del>&nbsp;&nbsp;销售价： <span class="now_price">9999</span>
+            市场价: <del>￥{{ goodsinfo.market_price }}</del>&nbsp;&nbsp;销售价： <span class="now_price">{{ goodsinfo.sell_price }}</span>
           </p>
           <p class="number">
             购买数量：
-            <AppNumbox></AppNumbox>
+            <AppNumbox @getCount="getCounts"></AppNumbox>
             <transition
             @before-enter="beforeEnter"
             @enter="enter"
@@ -33,9 +33,9 @@
       <div class="mui-card-header">商品参数</div>
       <div class="mui-card-content">
         <div class="mui-card-content-inner">
-          <p>商品货号:</p>
-          <p>库存情况:</p>
-          <p>上架时间:</p>
+          <p>商品货号: {{goodsinfo.goods_no }}</p>
+          <p>库存情况: {{ goodsinfo.stock_quantity }}</p>
+          <p>上架时间: {{goodsinfo.add_time }}</p>
         </div>
       </div>
       <div class="mui-card-footer">
@@ -58,7 +58,9 @@ export default {
     return {
       id: this.$route.params.id,
       loadLunBoTuList: [],
-      ballFlag: false // 控制小球显示隐藏
+      ballFlag: true, // 控制小球显示隐藏
+      selectedCount: 1,
+      goodsinfo: {}
     }
   },
   created () {
@@ -78,7 +80,7 @@ export default {
     },
     async loadGoodsInfo () {
       let { message } = await getGoodinfo(this.id)
-      console.log(message)
+      this.goodsinfo = message[0]
     },
     // 点击跳转图文介绍
     goDesc (id) {
@@ -88,8 +90,30 @@ export default {
     goComment () {
       this.$router.push({ name: 'goodscomment' })
     },
+    getCounts (count) {
+      this.selectedCount = count
+    },
     // 添加购物车
     addToShopCar () {
+      this.ballFlag = !this.ballFlag
+      let goodsInfo = {
+        id: this.id,
+        count: this.selectedCount,
+        price: this.goodsinfo.sell_price,
+        selected: true
+      }
+      this.$store.commit('addToCar', goodsInfo)
+    },
+    beforeEnter (el) {
+      el.style.transform = 'translate(0,0)'
+    },
+    enter (el, done) {
+      // el.offsetWidth
+      el.style.transform = 'translate(93px,230px)'
+      el.style.transition = 'all 1s ease'
+      done()
+    },
+    afterEnter () {
       this.ballFlag = !this.ballFlag
     }
   }
@@ -119,5 +143,7 @@ export default {
   z-index: 99;
   top: 10px;
   left: 50px;
+  transform: translate(340px,100px);
+  z-index: 1111;
 }
 </style>

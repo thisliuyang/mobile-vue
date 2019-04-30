@@ -13,6 +13,7 @@
   <span id="b"></span>
 </body>
 <script>
+
   // let obj = {}
   // Object.defineProperty(obj, 'hello', {
   //   get: function () {
@@ -68,7 +69,7 @@
   function jieliu(fn) {
     let isok = true
     return function () {
-      if(!isok) return
+      if (!isok) return
       isok = false
       setTimeout(() => {
         fn.apply(this, arguments)

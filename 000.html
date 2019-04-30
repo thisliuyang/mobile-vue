@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    ul {
+      width: 300px;
+      height: 50px;
+      font-size: 0;
+    }
+    li {
+      width: 50px;
+      height: 50px;
+      background-color: pink;
+      display: inline-block;
+    }
+    a {
+      margin: 100px;
+      height: 100px;
+      padding: 10px;
+    }
+    .a {
+      margin: 100px;
+    }
+  </style>
+</head>
+<body>
+  <a href="#">aaa</a>
+  <div class="a">bbb</div>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <svg viewBox="0 0 30 10" xmlns="http://www.w3.org/2000/svg">
+    <circle id="myCircle" cx="5" cy="5" r="4"/>
+
+    <use href="#myCircle" x="10" y="0" fill="blue" />
+    <use href="#myCircle" x="20" y="0" fill="white" stroke="blue" />
+  </svg>
+  <svg width="300" height="180">
+    <text x="50" y="25">Hello World</text>
+  </svg>
+  <svg width="300" height="180">
+    <circle cx="30"  cy="50" r="25" />
+    <circle cx="90"  cy="50" r="25" class="red" />
+    <circle cx="150" cy="50" r="25" class="fancy" />
+  </svg>
+  <svg width="300" height="180">
+    <line x1="0" y1="0" x2="200" y2="0" style="stroke:rgb(0,0,0);stroke-width:5" />
+  </svg>
+  <svg width="300" height="180">
+    <polyline points="3,3 30,28 3,53" fill="none" stroke="black" />
+  </svg>
+  <script>
+    // const a = []
+    // for (let i = 0; i < 10; i++) {
+    //   a.push(function () {
+    //     return console.log(i)
+    //   })
+    // }
+    // a[0]()
+    // a[1]()
+    // var arr = [1,2,3,4,5,6]
+    // for (let i = 0; i < arr.length; i++) {
+    //   for (let j = 0; j < arr.length; j++) {
+    //     for (let k = 0; k < arr.length; k++) {
+    //       const element = arr[k]
+    //       if (i < j && j < k && arr[k] == arr[i] + arr[j])
+    //       console.log(arr[i],arr[j],arr[k])
+    //     }
+    //   }
+
+    // }
+    let set = new Set(['red', 'green', 'blue'])
+    // for (let item of set.keys()) {
+    //   console.log(item)
+    // }
+    for (let x of set) {
+      console.log(x)
+    }
+    set.forEach((value, key) => {
+      console.log(key+ '---' + value)
+    })
+    let set1 = new Set([1,2,3])
+    set1 = new Set([...set1].map(val => val*2))
+    console.log(set1)
+  </script>
+</body>
+</html>

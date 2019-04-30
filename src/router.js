@@ -2,8 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import AppIndex from '@/views/layout/AppIndex.vue'
 import AppSearch from '@/views/Search'
-import AppShop from '@/views/Shop'
-import AppVip from '@/views/Vip'
+// import AppShop from '@/views/Shop'
+// import AppVip from '@/views/Vip'
 import AppHome from '@/views/Home'
 import HomeNewList from '@/views/Home/HomeNewList'
 import HomeNewInfo from '@/views/Home/HomeNewInfo'
@@ -27,7 +27,8 @@ export default new Router({
         },
         {
           path: '/shop',
-          component: AppShop
+          component: () => import('@/views/Shop')
+          // component: AppShop
         },
         {
           path: '/search',
@@ -35,7 +36,7 @@ export default new Router({
         },
         {
           path: '/vip',
-          component: AppVip
+          component: () => import('@/views/Vip')
         },
         {
           path: '/newlist',
