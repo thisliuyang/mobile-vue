@@ -14,7 +14,8 @@ export default {
   data () {
     return {
       keyWords: '',
-      results: []
+      results: [],
+      timer: ''
     }
   },
   methods: {
@@ -25,22 +26,16 @@ export default {
     },
     handleQuery (event) {
       this.clearTimer()
+      console.log(this)
       console.log(event.timeStamp)
       this.timer = setTimeout(() => {
-        console.log(event.timeStamp)
-        // console.log(this.lastTime)
-        // // if (this.lastTime - event.timeStamp === 0) {
-        // this.$http.post('/api/vehicle').then(res => {
-        //   console.log(res.data.data)
-        //   this.changeColor(res.data.data)
-        // })
+        console.log(event)
         axios({
           url: ' https://easy-mock.com/mock/5cb15737e4aa410a6a2c14cc/example/mock',
           method: 'GET'
         }).then(res => {
           this.changeColor(res.data.data.projects)
         })
-        // }
       }, 2000)
     },
 
